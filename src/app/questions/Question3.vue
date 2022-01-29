@@ -21,15 +21,10 @@
 
 <script>
 import QuestionCheckBox from "./components/QuestionCheckBox.vue";
-// import { countSteps } from "../mainPage/countSteps.state";
-// import { questionRequests } from "./questionRequests.state.js";
 import { mapMutations, mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["accessories", "isCanNewStep"]),
-    // accessories() {
-    //   return questionRequests.accessories;
-    // },
   },
   methods: {
     ...mapMutations([
@@ -41,7 +36,6 @@ export default {
       const index = this.accessories.indexOf(type);
       if (index !== -1) {
         this.CHENGE_ACCESSORIES(index);
-        // type.isChecked = !type.isChecked;
       }
       const isCanNewStep = this.accessories.some((el) => el.isChecked === true);
       this.CHENGE_IS_CAN_NEW_STEP(isCanNewStep);

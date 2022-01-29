@@ -10,7 +10,11 @@
         :key="el.title"
         @click="changeType(el)"
       >
-        <img :src="require(`../../assets/images/question1/${el.img}`)" alt="" />
+        <img
+          class="type-room__img"
+          :src="require(`../../assets/images/question1/${el.img}`)"
+          alt=""
+        />
         <div>
           <QuestionCheckBox :val="el.isChecked" />
           <p>{{ el.title }}</p>
@@ -55,9 +59,10 @@ export default {
 <style scoped lang="scss">
 .question {
   &__content {
+   // margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     justify-content: space-between;
   }
 }
@@ -65,15 +70,21 @@ export default {
   width: 150px;
   height: 156px;
   box-sizing: border-box;
-  > img {
-    cursor: pointer;
-  }
+  position: relative;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+
   > div {
+    width: 100%;
+    top: 120px;
     margin-top: -20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    transition: all 300ms ease-in-out;
+
     > p {
       font-weight: bold;
       font-size: 12px;
@@ -81,19 +92,38 @@ export default {
       text-align: center;
       text-transform: uppercase;
       color: #2a3135;
-      margin: 0;
+      margin: 3px 0 0 0;
       max-width: 100%;
       cursor: pointer;
+      transition: all 300ms ease-in-out;
+    }
+  }
+  &::before {
+    content: "";
+    height: 120px;
+    width: 150px;
+    background: rgba($color: #000000, $alpha: 0);
+    position: absolute;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+  }
+  &:hover::before {
+    background: rgba($color: #000000, $alpha: 0.6);
+  }
+  &:hover > div {
+    top: 60px;
+    > p {
+      color: #ffffff;
     }
   }
 }
 
 @media screen and (max-width: 670px) {
   .question {
-  &__content {
-    justify-content: space-around;
+    &__content {
+      justify-content: space-around;
+    }
   }
-}
   .type-room {
     margin: 10px 7.5px;
   }
@@ -102,6 +132,8 @@ export default {
 @media screen and (max-width: 450px) {
   .type-room {
     > div {
+      top:0;
+      position: relative;
       margin-top: 0px;
       flex-direction: row;
       justify-content: flex-start;
@@ -115,6 +147,15 @@ export default {
     }
     height: auto;
     width: 100%;
+    &::before {
+      display: none;
+    }
+    &:hover > div {
+      top: 0;
+      > p {
+        color: #2a3135;
+      }
+    }
   }
 }
 </style>

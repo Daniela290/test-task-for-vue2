@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <transition name="componentTransition" mode="out-in">
+      <transition name="componentTransition" mode="out-in" appear>
         <component :is="currentPage"></component>
       </transition>
 
@@ -47,8 +47,6 @@
             @click="goAhead"
             :class="{ 'steps-btn--active': isShowTooltip }"
           >
-            <!-- @mouseover="showTooltip = true"
-            @mouseout="showTooltip = false" -->
             {{ textOfBtnToAhead }}
           </button>
         </el-popover>

@@ -1,44 +1,46 @@
 <template>
-  <div class="info-block">
-    <h3 class="info-block__title">После расчёта Вы получите:</h3>
+  <transition name="componentTransition" mode="out-in" appear>
+    <div class="info-block">
+      <h3 class="info-block__title">После расчёта Вы получите:</h3>
 
-    <div class="info-block__content">
-      <div>
+      <div class="info-block__content">
         <div>
-          <img src="../../../assets/images/yellowBlock/gift.svg" />
+          <div>
+            <img src="../../../assets/images/yellowBlock/gift.svg" />
+          </div>
+          <div>
+            Подарок ценой
+            <p>до 5 000 руб.</p>
+            за ваши ответы
+          </div>
         </div>
         <div>
-          Подарок ценой
-          <p>до 5 000 руб.</p>
-          за ваши ответы
+          <div>
+            <img src="../../../assets/images/yellowBlock/estimation.svg" />
+          </div>
+          <div>
+            <p>3 варианта</p>
+            сметы по вашим параметрам
+          </div>
+        </div>
+        <div>
+          <div>
+            <img
+              src="../../../assets/images/yellowBlock/business-and-finance.svg"
+            />
+          </div>
+          <div>
+            <p>30% скидка</p>
+            на все варианты
+          </div>
         </div>
       </div>
-      <div>
-        <div>
-          <img src="../../../assets/images/yellowBlock/estimation.svg" />
-        </div>
-        <div>
-          <p>3 варианта</p>
-          сметы по вашим параметрам
-        </div>
-      </div>
-      <div>
-        <div>
-          <img
-            src="../../../assets/images/yellowBlock/business-and-finance.svg"
-          />
-        </div>
-        <div>
-          <p>30% скидка</p>
-          на все варианты
-        </div>
+
+      <div class="info-block__text">
+        А также детальное описание всех типов окон и методы их применения.
       </div>
     </div>
-
-    <div class="info-block__text">
-      А также детальное описание всех типов окон и методы их применения.
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -58,6 +60,7 @@ export default {};
   border-radius: 10px;
   box-sizing: border-box;
   z-index: 1;
+  transition: all 600ms linear;
   &__title {
     font-weight: 800;
     font-size: 18px;
@@ -77,7 +80,7 @@ export default {};
     margin: 30px 0 10px 0;
     > div {
       display: flex;
-     // gap: 15px;
+      // gap: 15px;
       margin-bottom: 20px;
       > div:nth-of-type(1) {
         min-width: 54px;
@@ -108,6 +111,9 @@ export default {};
       }
     }
   }
+  &:hover {
+    transform: scale(1.05, 1.05);
+  }
 }
 
 @media screen and (max-width: 1185px) {
@@ -137,6 +143,10 @@ export default {};
           }
         }
       }
+    }
+
+    &:hover {
+      transform: none;
     }
   }
 }

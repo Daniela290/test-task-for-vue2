@@ -1,4 +1,5 @@
 <template>
+<transition name="componentTransition" mode="out-in" appear>
   <div class="advice-block">
     <div class="advice-block__message">
       Для более точного расчета стоимости выберите вариант, который вам больше
@@ -12,6 +13,7 @@
 
     <img src="../../../assets/images/adviceBlock/man.png" />
   </div>
+</transition>
 </template>
 
 <script>
@@ -31,6 +33,7 @@ export default {};
   padding: 30px 30px 0px 30px;
   box-sizing: border-box;
   z-index: 1;
+  transition: all 600ms linear;
 
   &__message {
     width: 232px;
@@ -80,7 +83,11 @@ export default {};
     position: absolute;
     bottom: 0;
   }
-}
+
+  &:hover {
+    transform: scale(1.05, 1.05);
+  }
+  }
 
 @media screen and (max-width: 1185px) {
   .advice-block {
@@ -104,6 +111,9 @@ export default {};
         top: 125px;
       }
     }
+    &:hover {
+    transform: none;
+  }
   }
 }
 @media screen and (max-width: 890px) {
