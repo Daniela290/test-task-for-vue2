@@ -27,32 +27,32 @@
 <script>
 import QuestionCheckBox from "./components/QuestionCheckBox.vue";
 import { mapMutations, mapState } from "vuex";
-export default {
+export default {  
+  components: { QuestionCheckBox },
+  computed: {
+    ...mapState(["typeOfRooms", "isCanNewStep"]),
+  },
   methods: {
     ...mapMutations([
-      "CHENGE_IS_CAN_NEW_STEP",
-      "CHENGE_MESSAGE",
-      "CHENGE_TYPE_OF_ROOMS",
+      "CHANGE_IS_CAN_NEW_STEP",
+      "CHANGE_MESSAGE",
+      "CHANGE_TYPE_OF_ROOMS",
     ]),
     changeType(type) {
       const index = this.typeOfRooms.indexOf(type);
       if (index !== -1) {
-        this.CHENGE_TYPE_OF_ROOMS(index);
+        this.CHANGE_TYPE_OF_ROOMS(index);
       }
       const isCanNewStep = this.typeOfRooms.some((el) => el.isChecked === true);
-      this.CHENGE_IS_CAN_NEW_STEP(isCanNewStep);
+      this.CHANGE_IS_CAN_NEW_STEP(isCanNewStep);
       if (!this.isCanNewStep) {
-        this.CHENGE_MESSAGE("Вы должны выбрать хотя бы 1 вид помещений");
-      } else this.CHENGE_MESSAGE("");
+        this.CHANGE_MESSAGE("Вы должны выбрать хотя бы 1 вид помещений");
+      } else this.CHANGE_MESSAGE("");
     },
   },
   mounted() {
     this.changeType();
-  },
-  computed: {
-    ...mapState(["typeOfRooms", "isCanNewStep"]),
-  },
-  components: { QuestionCheckBox },
+  }
 };
 </script>
 

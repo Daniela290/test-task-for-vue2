@@ -23,31 +23,31 @@
 import QuestionCheckBox from "./components/QuestionCheckBox.vue";
 import { mapMutations, mapState } from "vuex";
 export default {
+  components: { QuestionCheckBox },
   computed: {
     ...mapState(["accessories", "isCanNewStep"]),
   },
   methods: {
     ...mapMutations([
-      "CHENGE_ACCESSORIES",
-      "CHENGE_IS_CAN_NEW_STEP",
-      "CHENGE_MESSAGE",
+      "CHANGE_ACCESSORIES",
+      "CHANGE_IS_CAN_NEW_STEP",
+      "CHANGE_MESSAGE",
     ]),
     changeType(type) {
       const index = this.accessories.indexOf(type);
       if (index !== -1) {
-        this.CHENGE_ACCESSORIES(index);
+        this.CHANGE_ACCESSORIES(index);
       }
       const isCanNewStep = this.accessories.some((el) => el.isChecked === true);
-      this.CHENGE_IS_CAN_NEW_STEP(isCanNewStep);
+      this.CHANGE_IS_CAN_NEW_STEP(isCanNewStep);
       if (!this.isCanNewStep) {
-        this.CHENGE_MESSAGE("Вы должны выбрать необходимую фурнитуру");
-      } else this.CHENGE_MESSAGE("");
+        this.CHANGE_MESSAGE("Вы должны выбрать необходимую фурнитуру");
+      } else this.CHANGE_MESSAGE("");
     },
   },
   mounted() {
     this.changeType();
-  },
-  components: { QuestionCheckBox },
+  }
 };
 </script>
 

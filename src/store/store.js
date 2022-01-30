@@ -70,13 +70,13 @@ export const store = new Vuex.Store({
         windowCount: 5
     },
     mutations: {
-        CHENGE_STEP(state, value) {
+        CHANGE_STEP(state, value) {
             state.step = value
         },
-        CHENGE_IS_CAN_NEW_STEP(state, value) {
+        CHANGE_IS_CAN_NEW_STEP(state, value) {
             state.isCanNewStep = value
         },
-        CHENGE_MESSAGE(state, value) {
+        CHANGE_MESSAGE(state, value) {
             state.message = value
         },
         CLEAR_REQUESTS(state) {
@@ -85,14 +85,14 @@ export const store = new Vuex.Store({
             state.accessories.forEach(el => el.isChecked = false);
             state.windowCount = 5;
         },
-        CHENGE_TYPE_OF_ROOMS(state, index) {
+        CHANGE_TYPE_OF_ROOMS(state, index) {
             state.typeOfRooms[index].isChecked = !state.typeOfRooms[index].isChecked
         },
-        CHENGE_TYPE_OF_CLAGING(state, index) {
+        CHANGE_TYPE_OF_CLAGING(state, index) {
             state.typeOfGlazing.forEach(el => el.isChecked = false)
             state.typeOfGlazing[index].isChecked = true
         },
-        CHENGE_ACCESSORIES(state, index) {
+        CHANGE_ACCESSORIES(state, index) {
             state.accessories[index].isChecked = !state.accessories[index].isChecked
         },
         CHANGE_WINDOW_COUNT(state, value) {

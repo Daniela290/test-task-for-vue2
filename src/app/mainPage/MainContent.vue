@@ -98,24 +98,24 @@ export default {
   },
   methods: {
     ...mapMutations([
-      "CHENGE_STEP",
-      "CHENGE_IS_CAN_NEW_STEP",
-      "CHENGE_MESSAGE",
+      "CHANGE_STEP",
+      "CHANGE_IS_CAN_NEW_STEP",
+      "CHANGE_MESSAGE",
       "CLEAR_REQUESTS",
     ]),
     goAhead() {
       if (this.isCanNewStep) {
         this.percentage += 25;
-        if (this.step < 4) this.CHENGE_STEP(this.step + 1);
+        if (this.step < 4) this.CHANGE_STEP(this.step + 1);
         else if (this.step === 4) {
           this.CLEAR_REQUESTS();
-          this.CHENGE_STEP(1);
+          this.CHANGE_STEP(1);
           this.percentage = 25;
         }
         if (this.percentage > 100) {
           this.percentage = 100;
         }
-        this.CHENGE_IS_CAN_NEW_STEP(true);
+        this.CHANGE_IS_CAN_NEW_STEP(true);
         this.showTooltip = false;
       } else {
         this.showTooltip = true;
@@ -123,7 +123,7 @@ export default {
     },
     goBack() {
       this.percentage -= 25;
-      if (this.step > 0) this.CHENGE_STEP(this.step - 1);
+      if (this.step > 0) this.CHANGE_STEP(this.step - 1);
       if (this.percentagee < 0) {
         this.percentage = 0;
       }
