@@ -39,7 +39,7 @@
           :content="btnMessage"
           :disabled="isShowTooltip"
           v-model="showTooltip"
-          trigger="hover"
+          trigger="focus"
           class="el-popover-my-style"
         >
           <button
